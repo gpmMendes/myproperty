@@ -2,13 +2,15 @@ package business;
 
 import entity.User;
 
+import javax.ejb.Local;
 import java.util.List;
 
+@Local
 public interface UserBO {
 	
-	public List<User> list() throws Exception;
+	List<User> list() throws Exception;
 	
-	public User getById(Long id);
+	User getById(Long id);
 	
 }
 

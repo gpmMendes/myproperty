@@ -1,7 +1,9 @@
 package web;
 
+import business.UserBO;
 import entity.User;
 
+import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
@@ -12,18 +14,19 @@ import javax.faces.bean.SessionScoped;
 @ManagedBean(name = "loginMBean")
 @SessionScoped
 public class LoginMBean {
+    @EJB
+    private UserBO userController;
 
     private User user;
 
+
     public LoginMBean() {
-        user = new User();
-        user.setName("Joao");
 
     }
 
     public User getUser() {
 
-        return user;
+        return userController.getById(1L);
     }
 
     public void setUser(User user) {

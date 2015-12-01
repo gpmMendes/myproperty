@@ -3,13 +3,14 @@ package entity;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 
 /**
  * Created by Gui on 30/11/15.
  */
 @Entity
 public class User {
-    private Integer personId;
+    private Integer userId;
     private String name;
     private String email;
     private String address;
@@ -17,14 +18,14 @@ public class User {
     private String password;
     private String language;
 
-    @Basic
-    @Column(name = "PersonID")
-    public Integer getPersonId() {
-        return personId;
+    @Id
+    @Column(name = "UserID")
+    public Integer getUserId() {
+        return userId;
     }
 
-    public void setPersonId(Integer personId) {
-        this.personId = personId;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     @Basic
@@ -94,7 +95,7 @@ public class User {
 
         User user = (User) o;
 
-        if (personId != null ? !personId.equals(user.personId) : user.personId != null) return false;
+        if (userId != null ? !userId.equals(user.userId) : user.userId != null) return false;
         if (name != null ? !name.equals(user.name) : user.name != null) return false;
         if (email != null ? !email.equals(user.email) : user.email != null) return false;
         if (address != null ? !address.equals(user.address) : user.address != null) return false;
@@ -107,7 +108,7 @@ public class User {
 
     @Override
     public int hashCode() {
-        int result = personId != null ? personId.hashCode() : 0;
+        int result = userId != null ? userId.hashCode() : 0;
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (email != null ? email.hashCode() : 0);
         result = 31 * result + (address != null ? address.hashCode() : 0);

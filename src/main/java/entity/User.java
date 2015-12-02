@@ -9,8 +9,8 @@ import javax.persistence.Id;
  * Created by Gui on 30/11/15.
  */
 @Entity
-public class User {
-    private Long userId;
+public class User extends BaseEntity{
+    private Long id;
     private String name;
     private String email;
     private String address;
@@ -20,12 +20,12 @@ public class User {
 
     @Id
     @Column(name = "UserID")
-    public Long getUserId() {
-        return userId;
+    public Long getId() {
+        return id;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     @Basic
@@ -95,7 +95,7 @@ public class User {
 
         User user = (User) o;
 
-        if (userId != null ? !userId.equals(user.userId) : user.userId != null) return false;
+        if (id != null ? !id.equals(user.id) : user.id != null) return false;
         if (name != null ? !name.equals(user.name) : user.name != null) return false;
         if (email != null ? !email.equals(user.email) : user.email != null) return false;
         if (address != null ? !address.equals(user.address) : user.address != null) return false;
@@ -108,7 +108,7 @@ public class User {
 
     @Override
     public int hashCode() {
-        int result = userId != null ? userId.hashCode() : 0;
+        int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (email != null ? email.hashCode() : 0);
         result = 31 * result + (address != null ? address.hashCode() : 0);

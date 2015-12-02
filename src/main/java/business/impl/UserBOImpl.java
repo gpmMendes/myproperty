@@ -23,7 +23,7 @@ public class UserBOImpl implements UserBO, Serializable {
 
 	public User getById(Long id) {
 		try {
-			return userDAO.getUser();
+			return userDAO.getUserById(id);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

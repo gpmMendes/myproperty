@@ -25,8 +25,8 @@ public class LoginMBean {
     }
 
     public User getUser() {
-
-        return userController.getById(1L);
+        Long test = 1L;
+        return userController.getById(test);
     }
 
     public void setUser(User user) {

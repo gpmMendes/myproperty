@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="2208247590">
+  <component name="DataSourceManagerImpl" format="xml" hash="4242011932">
     <data-source source="LOCAL" name="MariaDB - @localhost" uuid="03f3f61f-72c6-453f-9784-cbaeadba653e">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>

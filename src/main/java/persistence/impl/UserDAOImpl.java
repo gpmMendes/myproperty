@@ -9,10 +9,14 @@ import javax.ejb.Stateless;
  * Created by Gui on 30/11/15.
  */
 @Stateless
-public class UserDAOImpl implements UserDAO {
-    public User getUser(){
-        User user = new User();
-        user.setName("Guilherme");
+public class UserDAOImpl extends GenericDAOImpl<User, Long> implements UserDAO {
+
+    public UserDAOImpl() {
+        super(User.class);
+    }
+
+    public User getUserById(Long id){
+        User user = findById(id);
         return user;
     }
 }

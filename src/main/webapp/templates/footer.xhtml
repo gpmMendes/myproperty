@@ -1,13 +1,27 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <f:view>
-    <ui:composition>
-        Footer
-    </ui:composition>
+    <div id="footerForm">
+        <h:outputLink id="footer_homeLnk" value="#{facesContext.externalContext.requestContextPath}/faces/secure/home/homepage.xhtml"
+                      title="#{bundle['footer_linkHomePage']}"  ><h:outputText value="#{bundle['footer_linkHomePage']}" escape="false"/></h:outputLink>
+
+        <h:panelGroup rendered="#{(empty request.remoteUser) || (not empty request.remoteUser and permissionsMgr.notAdminFullOrReadOrNoneRole)}">
+            <span>|</span>
+        </h:panelGroup>
+
+        <h:outputLink id="footer_linkContactUs" value="#{facesContext.externalContext.requestContextPath}/faces/secure/sentEmail/contactUs.xhtml"
+                      rendered="#{not empty request.remoteUser and permissionsMgr.notAdminFullOrReadOrNoneRole}"
+                      title="#{bundle['footer_linkContactUs']}"  >&#160;<h:outputText value="#{bundle['footer_linkContactUs']}"  escape="false"/>&#160;</h:outputLink>
+    </div>
+
+    <h:panelGroup id="footerFormTwo" styleClass="footerFormTwo" layout="block">
+        <h:outputLink id="footer_linkLegal_notice" value="#{facesContext.externalContext.requestContextPath}/faces/secure/statics/legalNotice.xhtml"
+                      rendered="#{not empty request.remoteUser}"
+                      title="#{bundle['footer_linkOnline_user_guide']}"  ><h:outputText value="#{bundle['footer_linkLegal_notice']}"  escape="false"/></h:outputLink>
+    </h:panelGroup>
+    <div id="footerFormThree">
+        <h:outputText value="#{bundle['footer_copyright']}" escape="false"/>
+    </div>
 </f:view>
 </html>

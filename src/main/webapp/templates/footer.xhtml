@@ -11,13 +11,13 @@
         </h:panelGroup>
 
         <h:outputLink id="footer_linkContactUs" value="#{facesContext.externalContext.requestContextPath}/faces/secure/sentEmail/contactUs.xhtml"
-                      rendered="#{not empty request.remoteUser and permissionsMgr.notAdminFullOrReadOrNoneRole}"
+                      rendered="#{(empty request.remoteUser) || (not empty request.remoteUser and permissionsMgr.notAdminFullOrReadOrNoneRole)}"
                       title="#{bundle['footer_linkContactUs']}"  >&#160;<h:outputText value="#{bundle['footer_linkContactUs']}"  escape="false"/>&#160;</h:outputLink>
     </div>
 
     <h:panelGroup id="footerFormTwo" styleClass="footerFormTwo" layout="block">
-        <h:outputLink id="footer_linkLegal_notice" value="#{facesContext.externalContext.requestContextPath}/faces/secure/statics/legalNotice.xhtml"
-                      rendered="#{not empty request.remoteUser}"
+        <h:outputLink id="footer_linkLegal_notice" value="#{facesContext.externalContext.requestContextPath}/statics/termsAndConditions.xhtml"
+                      rendered="#{(empty request.remoteUser) || (not empty request.remoteUser and permissionsMgr.notAdminFullOrReadOrNoneRole)}"
                       title="#{bundle['footer_linkOnline_user_guide']}"  ><h:outputText value="#{bundle['footer_linkLegal_notice']}"  escape="false"/></h:outputLink>
     </h:panelGroup>
     <div id="footerFormThree">

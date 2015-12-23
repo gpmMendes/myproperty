@@ -1,7 +1,50 @@
 <ui:composition template="templates/default.xhtml" xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://xmlns.jcp.org/jsf/core"
-                xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+                xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:rich="http://richfaces.org/rich"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets" xmlns:c="http://java.sun.com/jsp/jstl/core">
     <ui:define name="content">
+        <form  id="lform" name="lform" action="#{facesContext.externalContext.requestContextPath}/loginServlet" method="post" autocomplete="off">
+        <div id="content" style="min-height: 500px;height:auto!important;height: 500px;">
+
         <h:outputLabel value="#{loginMBean.user.name}"/>
+
+        <div id="loginForm" style="width: 300px; float: left;">
+
+            <c:set var="isSuperUser" value="#{facesContext.externalContext.requestParameterMap['screen'] == 'superuser' || not empty superUserScreen}" />
+
+            <h:panelGroup layout="block" styleClass="formRow">
+                <label id="j_usernameL" for="j_username"><h:outputText value="#{isSuperUser?bundle['superUserVODoTlogon_id']:bundle['login_logon_id']}" /></label>
+                <input type="text" id="j_username" name="j_username"  maxlength="30" class="text" style="width: 270px !important;" tabindex="1" />
+                <div class="clear">&#160;</div>
+            </h:panelGroup>
+            <h:panelGroup layout="block" styleClass="formRow">
+                <label id="j_passwordL" for="j_password"><h:outputText value="#{bundle['login_password']}" /></label>
+                <input type="password" id="j_password" name="j_password" maxlength="30" class="text" style="width: 270px !important;" tabindex="2" />
+                <div class="clear">&#160;</div>
+            </h:panelGroup>
+
+            <h:panelGroup layout="block" styleClass="formRow" rendered="#{isSuperUser}">
+                <label id="j_useridL" for="j_userid"><h:outputText value="#{bundle['login_logon_id']}" /></label>
+                <input type="text" id="j_userid" name="j_userid"  maxlength="30" class="text" style="width: 270px !important;" tabindex="3" />
+                <div class="clear">&#160;</div>
+            </h:panelGroup>
+            <rich:jQuery selector="#j_username" query="focus();" />
+
+            <div class="formRowSubmit loginFormRowSubmit" style="width: 320px !important;">
+                <input type="submit" id="btn_login" name="btn_login" title="#{bundle['login_logonButtom']}" class="btnRight btnSubmit" value="#{bundle['login_logonButtom']}" onclick="jQuery('#lform').attr('action','alert(1);');" />
+                <ul class="loginLinks">
+                    <li><a id="emailPassword" href="#{facesContext.externalContext.requestContextPath}/faces/pages/emailPassword.xhtml"  title="#{bundle['login_link4Got']}" target="_blank">#{bundle['login_link4Got']}</a></li>
+                    <li><a id="contactUs"  href="#{facesContext.externalContext.requestContextPath}/faces/noSecure/contactUs.xhtml"  title="#{bundle['login_linkContactUs']}" target="_blank">#{bundle['login_linkContactUs']}</a></li>
+                    <li><a id="requestALogon"  href="#{facesContext.externalContext.requestContextPath}/faces/noSecure/requestALogon.xhtml"  title="#{bundle['login_linkRequestALogon']}" target="_blank">#{bundle['login_linkRequestALogon']}</a></li>
+                    <c:if test="#{utilsBean.visit.user.selectedMember.client_mid.value == 33}">
+                        <li ><a id="userGuide" href="#{facesContext.externalContext.requestContextPath}/LoadExternalFileServlet?attachment=false&amp;content_type_cid=17307"   title="#{bundle['login_linkUserGuide']}" target="_blank">#{bundle['login_linkUserGuide']}</a></li>
+                    </c:if>
+
+                </ul>
+                <div class="clear">&#160;</div>
+            </div>
+        </div>
+        </div>
+    </form>
+
     </ui:define>
 </ui:composition>

@@ -1,0 +1,52 @@
+<ui:composition template="/templates/default.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                >
+
+    <ui:define name="content">
+        <f:view>
+            <h:form id="lform">
+                <div id="previousPage" class="previousPage">
+                    <span class="highlighter"><a href="javascript: history.go(-1)">${bundle.legalNotice_lnkReturn}</a></span>
+                </div>
+            </h:form>
+            <h1><span class="highlighter"><h:outputText  value="#{bundle.BandHdLegalNotice}"/> </span></h1>
+            <div class="hr">&#160;</div>
+            <!--static text for this page -->
+            <div class="formWrapper" id="faqStaticPage">
+                <h:outputText value="#{bundle.legalNotice_1}" /> <br />
+                <h3><h:outputText value="#{bundle.legalNotice_2}" /></h3>
+                <h:outputText value="#{bundle.legalNotice_2_text}" />
+                <h3><h:outputText value="#{bundle.legalNotice_3}" /></h3>
+                <h:outputText value="#{bundle.legalNotice_3_text}" />
+                <h3><h:outputText value="#{bundle.legalNotice_4}" /></h3>
+                <h:outputText value="#{bundle.legalNotice_4_text}" />
+                <h3><h:outputText value="#{bundle.legalNotice_5}" /></h3>
+                <h:outputText value="#{bundle.legalNotice_5_text}" />
+                <h3><h:outputText value="#{bundle.legalNotice_6}" /></h3>
+                <h:outputText value="#{bundle.legalNotice_6_text}" />
+                <h3><h:outputText value="#{bundle.legalNotice_7}" /></h3>
+                <h:outputText value="#{bundle.legalNotice_7_text}" />
+                <br /><br /><h:outputText value="#{bundle.legalNotice_7_text2}" />
+                <h3><h:outputText value="#{bundle.legalNotice_8}" /></h3>
+                <h:outputText value="#{bundle.legalNotice_8_text}" />
+                <h3><h:outputText value="#{bundle.legalNotice_9}" /></h3>
+                <h:outputText value="#{bundle.legalNotice_9_text}" />
+                <br /><br /><h:outputText value="#{bundle.legalNotice_9_text2}" />
+                <div class="faqStaticPage">
+                    <p><h:outputText value="#{bundle.legalNotice_9_text3}" /></p>
+                    <ul>
+                        <li><h:outputText value="#{bundle.legalNotice_9_li1}" /></li>
+                        <li><h:outputText value="#{bundle.legalNotice_9_li2}" /></li>
+                        <li><h:outputText value="#{bundle.legalNotice_9_li3}" /></li>
+                    </ul>
+                </div>
+                <h:outputText value="#{bundle.legalNotice_9_text4}" />
+                <br /><br /><h:outputText value="#{bundle.legalNotice_9_text5}" />
+                <br /><br /><h:outputText value="#{bundle.legalNotice_9_text6}" />
+            </div>
+        </f:view>
+    </ui:define>
+</ui:composition>

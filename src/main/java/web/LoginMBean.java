@@ -2,6 +2,7 @@ package web;
 
 import business.UserBO;
 import entity.User;
+import web.helper.Constants;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -34,4 +35,11 @@ public class LoginMBean {
     }
 
 
+    /**
+     * This method opens a contact for edit purpose from the current member
+     * @return String success and go to the contacts.xhtml
+     **/
+    public String showView_EditItemPage() {
+        return Constants.OLS_CUSTOMER_CUSTMAINTENANCE_XHTML;
+    }
 }
